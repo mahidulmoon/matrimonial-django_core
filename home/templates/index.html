@@ -123,41 +123,54 @@ $(document).ready(function(){
         <div class="row_1">
 	     <div class="col-md-8 suceess_story">
 	         <ul> 
-			   <li>
-				  	<div class="suceess_story-date">
-						<span class="entry-1">Dec 20, 2015</span>
-					</div>
-					<div class="suceess_story-content-container">
-						<figure class="suceess_story-content-featured-image">
-						   <img width="75" height="75" src="images/7.jpg" class="img-responsive" alt=""/>				            
-					    </figure>
-						<div class="suceess_story-content-info">
-				        	<h4><a href="#">Lorem & Ipsum</a></h4>				        	
-				        	<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form,.<a href="#">More...</a></p>
-				        </div>
-				    </div>
-				</li>
+         {% for story in stories %}
+         <li>
+              <div class="suceess_story-date">
+              <span class="entry-1">{{ story.date }}</span>
+            </div>
+            <div class="suceess_story-content-container">
+              <figure class="suceess_story-content-featured-image">
+                <img width="75" height="75" src="{{story.image.url}}" class="img-responsive" alt=""/>				            
+                </figure>
+              <div class="suceess_story-content-info">
+                    <h4><a href="#">{{ story.story_name }}</a></h4>				        	
+                    <p>{{ story.story }}</p>
+                  </div>
+              </div>
+          </li>
+         {% endfor %}
 	            
-	        </ul>
+          </ul>
+          <center><form action="" method="GET">
+            <ul>
+              {% for _ in eventpage %}
+                  
+                  <button type="submit" name="page1"><li><a href="?page1={{ forloop.counter }}">{{ forloop.counter }}</a></li></button>
+              {% endfor %}
+              
+            </ul>
+          </form></center>
+          
 	    </div>
 	    <div class="col-md-4 row_1-right">
 	      <h3>News & Events</h3>
-	        <div class="box_1">
-		      <figure class="thumbnail1"><img width="170" height="155" src="images/14.jpg" class="img-responsive" alt=""/></figure>
-			  <div class="extra-wrap">
-				<div class="post-meta">
-					<span class="day">
-					<time datetime="2014-05-25T10:15:43+00:00">25</time>
-					</span>
-					<span class="month">
-					<time datetime="2014-05-25T10:11:51+00:00">May</time>
-					</span>
-				</div>
-				<h4 class="post-title"><a href="#">There are many variations of passages</a></h4>
-				<div class="clearfix"> </div>
-				<div class="post-content">The standard chunk of Lorem Ipsum used since the 1500s..</div>
-				<a href="#" class="vertical">Read More</a>
-			  </div>
+          {% for event in events %}
+              <div class="box_1">
+                
+              <div class="extra-wrap">
+              <div class="post-meta">
+                <span class="day">
+                <time datetime="2014-05-25T10:15:43+00:00">{{event.date}}</time>
+                </span>
+                
+                
+              </div>
+              
+              <div class="clearfix"> </div>
+              <div class="post-content">{{event.eventname}}</div>
+            
+              </div>
+          {% endfor %}
 	        </div>
 	        
 	        
