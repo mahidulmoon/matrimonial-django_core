@@ -47,7 +47,10 @@ $(document).ready(function(){
                   <ul>
                   
                       <li><a href="/">Home</a></li>
-                      <li><a href="">Logout</a></li>
+                      {% if request.user.is_active %}
+                          
+                          <li><a href="{% url 'user-logout' %}">Logout</a></li>
+                          {% endif %}
                   
                   
                       <li><a href="{% url 'user-login' %}">Login</a></li>
@@ -108,10 +111,18 @@ $(document).ready(function(){
         <span class="divider">&nbsp;|&nbsp;</span>
         <li class="current-page">Login</li>
      </ul>
+     {% if messages %}
+					<ul class="messages">
+					    {% for message in messages %}
+					    <p style="color: red;">{{ message }}</p>
+					    {% endfor %}
+					</ul>
+				{% endif %}
    </div>
    <div class="services">
    	  <div class="col-sm-6 login_left">
-	   <form action="auth/auth.php?user=1" method="post">
+	   <form action="" method="post">
+       {%csrf_token%}
   	    <div class="form-item form-type-textfield form-item-name">
 	      <label for="edit-name">Username <span class="form-required" title="This field is required.">*</span></label>
 	      <input type="text" id="edit-name" name="username" value="" size="60" maxlength="60" class="form-text required">

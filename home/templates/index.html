@@ -48,9 +48,10 @@ $(document).ready(function(){
                       <ul>
                       
                           <li><a href="/">Home</a></li>
-                          <li><a href="">Logout</a></li>
-                      
-                      
+                          {% if request.user.is_active %}
+                          
+                          <li><a href="{% url 'user-logout' %}">Logout</a></li>
+                          {% endif %}
                           <li><a href="{% url 'user-login' %}">Login</a></li>
                           <li><a href="{% url 'user-register' %}">Register</a></li>
                     
