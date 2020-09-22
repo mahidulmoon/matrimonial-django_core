@@ -141,15 +141,18 @@ $(document).ready(function(){
          {% endfor %}
 	            
           </ul>
-          <center><form action="" method="GET">
+          <center>
             <ul>
-              {% for _ in eventpage %}
+              {% for page in stories.paginator.page_range %}
                   
-                  <button type="submit" name="page1"><li><a href="?page1={{ forloop.counter }}">{{ forloop.counter }}</a></li></button>
+                  
+                    <button ><li><a href="?page2={{ page }}">{{ page }}</a></li></button>
+                  
               {% endfor %}
               
+              
             </ul>
-          </form></center>
+          </center>
           
 	    </div>
 	    <div class="col-md-4 row_1-right">
@@ -171,6 +174,16 @@ $(document).ready(function(){
             
               </div>
           {% endfor %}
+            <ul>
+              {% for page in events.paginator.page_range %}
+                  
+                  
+                    <button ><li><a href="?page1={{ page }}">{{ page }}</a></li></button>
+                  
+              {% endfor %}
+              
+              
+            </ul>
 	        </div>
 	        
 	        
