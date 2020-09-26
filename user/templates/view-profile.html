@@ -116,23 +116,16 @@ $(document).ready(function(){
    </div>
    <div class="profile">
    	 <div class="col-md-8 profile_left">
-   	 	<h2>Profile Id : <?php echo $profileid;?></h2>
+   	 	<h2>Profile Id : {{ profile.id }}</h2>
    	 	<div class="col_3">
    	        <div class="col-sm-4 row_2">
 				<div class="flexslider">
 					 <ul class="slides">
-						<li data-thumb="profile/<?php echo $profileid;?>/<?php echo $pic1;?>">
-							<img src="profile/<?php echo $profileid;?>/<?php echo $pic1;?>" />
+						<li>
+							<img style="margin-right: 40px;" src="{{ profile.image_field.url }}" />
 						</li>
-						<li data-thumb="profile/<?php echo $profileid;?>/<?php echo $pic2;?>">
-							<img src="profile/<?php echo $profileid;?>/<?php echo $pic2;?>" />
-						</li>
-						<li data-thumb="profile/<?php echo $profileid;?>/<?php echo $pic3;?>">
-							<img src="profile/<?php echo $profileid;?>/<?php echo $pic3;?>" />
-						</li>
-						<li data-thumb="profile/<?php echo $profileid;?>/<?php echo $pic4;?>">
-							<img src="profile/<?php echo $profileid;?>/<?php echo $pic4;?>" />
-						</li>
+						
+						
 					 </ul>
 				  </div>
 			</div>
@@ -141,30 +134,30 @@ $(document).ready(function(){
 		        	<tbody>
 		        		<tr class="opened_1">
 							<td class="day_label">Name :</td>
-							<td class="day_value"><?php echo $fname . " " .$lname; ?></td>
+							<td class="day_value">{{profile.firstname}}, {{profile.lastname}}</td>
 						</tr><tr class="opened_1">
 							<td class="day_label">Age / Height :</td>
-							<td class="day_value"><?php echo $age . " Years"; ?>/<?php echo $height . " Cm";?> </td>
+							<td class="day_value">{{profile.dob_day}},{{profile.dob_month}},{{profile.dob_year}}</td>
 						</tr>
 					  	<tr class="opened">
 							<td class="day_label">Religion :</td>
-							<td class="day_value"><?php echo $religion;?></td>
+							<td class="day_value">{{profile.religion}}</td>
 						</tr>
 					    <tr class="opened">
 							<td class="day_label">Marital Status :</td>
-							<td class="day_value"><?php echo $maritalstatus;?></td>
+							<td class="day_value">{{ profile.maritalstatus }}</td>
 						</tr>
 					    <tr class="opened">
 							<td class="day_label">Country :</td>
-							<td class="day_value"><?php echo $country;?></td>
+							<td class="day_value">{{ profile.country }}</td>
 						</tr>
 					    <tr class="closed">
 							<td class="day_label">Profile Created by :</td>
-							<td class="day_value closed"><span><?php echo $profileby;?></span></td>
+							<td class="day_value closed"><span>{{ profile.profileby }}</span></td>
 						</tr>
 					    <tr class="closed">
 							<td class="day_label">Education :</td>
-							<td class="day_value closed"><span><?php echo $education;?></span></td>
+							<td class="day_value closed"><span>{{profile.education}}</span></td>
 						</tr>
 				    </tbody>
 				</table>
@@ -182,7 +175,7 @@ $(document).ready(function(){
 				  <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
 				    <div class="tab_box">
 				    	<h1>About Me.</h1>
-				    	<p><?php echo $aboutme; ?></p>
+				    	<p>{{profile.aboutme}}</p>
 				    </div>
 				    <div class="basic_1">
 				    	<h3>Basics &amp; Lifestyle</h3>
@@ -191,32 +184,32 @@ $(document).ready(function(){
 				        	<tbody>
 				        		<tr class="opened_1">
 									<td class="day_label">Name :</td>
-									<td class="day_value"><?php echo $fname . " " .$lname; ?></td>
+									<td class="day_value">{{profile.firstname}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Marital Status :</td>
-									<td class="day_value"><?php echo $maritalstatus;?></td>
+									<td class="day_value">{{profile.maritalstatus}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Body Type :</td>
-									<td class="day_value"><?php echo $bodytype;?></td>
+									<td class="day_value">{{profile.bodytype}}</td>
 								</tr>
 							    
 							    <tr class="opened">
 									<td class="day_label">Age / Height :</td>
-									<td class="day_value"><?php echo $age; ?>/<?php echo $height;?> cm</td>
+									<td class="day_value">{{profile.age}}/{{profile.height}} </td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Physical Status :</td>
-									<td class="day_value closed"><span><?php echo $physicalstatus;?></span></td>
+									<td class="day_value closed"><span>{{ profile.physicalstatus }}</span></td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Profile Created by :</td>
-									<td class="day_value closed"><span><?php echo $profileby;?></span></td>
+									<td class="day_value closed"><span>{{profile.profileby}}</span></td>
 								</tr>
 								<tr class="opened">
 									<td class="day_label">Drink :</td>
-									<td class="day_value closed"><span><?php echo $drink;?></span></td>
+									<td class="day_value closed"><span>{{profile.drink}}</span></td>
 								</tr>
 						    </tbody>
 				          </table>
@@ -226,31 +219,31 @@ $(document).ready(function(){
 				        	<tbody>
 				        		<tr class="opened_1">
 									<td class="day_label">Age :</td>
-									<td class="day_value"><?php echo $age;?></td>
+									<td class="day_value">{{ profile.age }}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Mother Tongue :</td>
-									<td class="day_value"><?php echo $mothertounge;?></td>
+									<td class="day_value">{{profile.mothertounge}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Complexion :</td>
-									<td class="day_value"><?php echo $colour;?></td>
+									<td class="day_value">{{profile.colour}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Weight :</td>
-									<td class="day_value"><?php echo $weight;?> KG</td>
+									<td class="day_value">{{profile.weight}} KG</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Blood Group :</td>
-									<td class="day_value"><?php echo $bloodgroup;?></td>
+									<td class="day_value">{{profile.bloodgroup}}</td>
 								</tr>
 							    <tr class="closed">
 									<td class="day_label">Diet :</td>
-									<td class="day_value closed"><span><?php echo $diet;?></span></td>
+									<td class="day_value closed"><span>{{profile.diet}}</span></td>
 								</tr>
 							    <tr class="closed">
 									<td class="day_label">Smoke :</td>
-									<td class="day_value closed"><span><?php echo $smoke;?></span></td>
+									<td class="day_value closed"><span>{{profile.smoke}}</span></td>
 								</tr>
 						    </tbody>
 				        </table>
@@ -264,12 +257,12 @@ $(document).ready(function(){
 				        	<tbody>
 				        		<tr class="opened">
 									<td class="day_label">Caste :</td>
-									<td class="day_value"><?php echo $caste;?></td>
+									<td class="day_value">{{profile.caste}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">
  of Birth :</td>
-									<td class="day_value closed"><span><?php echo $dob;?></span></td>
+									<td class="day_value closed"><span>{{profile.dob_day}}-{{profile.dob_month}}-{{profile.dob_year}}</span></td>
 								</tr>
 							</tbody>
 				          </table>
@@ -279,11 +272,11 @@ $(document).ready(function(){
 				        	<tbody>
 				        		<tr class="opened_1">
 									<td class="day_label">Religion :</td>
-									<td class="day_value"><?php echo $religion;?></td>
+									<td class="day_value">{{profile.religion}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Sub Caste :</td>
-									<td class="day_value"><?php echo $subcaste;?></td>
+									<td class="day_value">{{profile.subcaste}}</td>
 								</tr>
 							    
 							</tbody>
@@ -298,19 +291,19 @@ $(document).ready(function(){
 				        	<tbody>
 				        		<tr class="opened">
 									<td class="day_label">Education   :</td>
-									<td class="day_value"><?php echo $education;?></td>
+									<td class="day_value">{{profile.education}}</td>
 								</tr>
 				        		<tr class="opened">
 									<td class="day_label">Education Detail :</td>
-									<td class="day_value"><?php echo $edudescr;?></td>
+									<td class="day_value">{{profile.specialization}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Occupation Detail :</td>
-									<td class="day_value closed"><span><?php echo $occupationdescr;?></span></td>
+									<td class="day_value closed"><span>{{profile.occupation}}</span></td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">Annual Income :</td>
-									<td class="day_value closed"><span><?php echo $income;?></span></td>
+									<td class="day_value closed"><span>{{profile.income}}</span></td>
 								</tr>
 							 </tbody>
 				          </table>
@@ -328,19 +321,19 @@ $(document).ready(function(){
 				        	<tbody>
 				        		<tr class="opened">
 									<td class="day_label">Father's Occupation :</td>
-									<td class="day_value"><?php echo $fatheroccupation;?></td>
+									<td class="day_value">{{profile.fatheroccupation}}</td>
 								</tr>
 				        		<tr class="opened">
 									<td class="day_label">Mother's Occupation :</td>
-									<td class="day_value"><?php echo $motheroccupation;?></td>
+									<td class="day_value">{{profile.motheroccupation}}</td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">No. of Brothers :</td>
-									<td class="day_value closed"><span><?php echo $bros;?></span></td>
+									<td class="day_value closed"><span>{{profile.bros}}</span></td>
 								</tr>
 							    <tr class="opened">
 									<td class="day_label">No. of Sisters :</td>
-									<td class="day_value closed"><span><?php echo $sis;?></span></td>
+									<td class="day_value closed"><span>{{profile.sis}}</span></td>
 								</tr>
 							 </tbody>
 				          </table>
@@ -349,29 +342,6 @@ $(document).ready(function(){
 				    </div>
 				 </div>
 
-<!-- <?php
-//getting partner prefernce
-$sql = "SELECT * FROM partnerprefs WHERE custId = $id";
-$result = mysqlexec($sql);
-$row= mysqli_fetch_assoc($result);
-
-$agemin=$row['agemin'];
-$agemax=$row['agemax'];
-$maritalstatus=$row['maritalstatus'];
-$complexion=$row['complexion'];
-$height=$row['height'];
-$diet=$row['diet'];
-$religion=$row['religion'];
-$caste=$row['caste'];
-$mothertounge=$row['mothertounge'];
-$education=$row['education'];
-$occupation=$row['occupation'];
-$country=$row['country'];
-$descr=$row['descr'];
-
-
-
-?> -->
 				 <div role="tabpanel" class="tab-pane fade" id="profile1" aria-labelledby="profile-tab1">
 				    <div class="basic_1 basic_2">
 				       <div class="basic_1-left">

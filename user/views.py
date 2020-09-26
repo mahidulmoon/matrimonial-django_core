@@ -103,7 +103,11 @@ def createProfile(request):
 
 @login_required(login_url='/user/login/')
 def viewProfile(request):
-    return render(request,'view-profile.html',{})
+        profile = Profile.objects.get(user=request.user)
+        context = {
+                'profile':profile
+        }
+        return render(request,'view-profile.html',context)
 
 
 
