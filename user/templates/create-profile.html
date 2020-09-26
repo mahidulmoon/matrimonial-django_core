@@ -125,7 +125,7 @@ $(document).ready(function(){
    </div>
    <div class="services">
    	  <div class="col-sm-12 login_left">
-	     <form action="" method="POST">
+	     <form action="" method="POST" enctype="multipart/form-data">
 			 {% csrf_token %}
 	  	    <div class="form-group col-sm-6">
 		      <label for="edit-name">First Name <span class="form-required" title="This field is required.">*</span></label>
@@ -566,6 +566,11 @@ $(document).ready(function(){
 		    <div class="form-group">
 		    	<label for="about me">About Me<span class="form-required" title="This field is required.">*</span></label>
 		    	<textarea rows="5" name="aboutme" placeholder="Write about you" class="form-text"></textarea>
+			</div>
+			<div class="form-group">
+		    	<label for="about me">Upload Profile Pic<span class="form-required" title="This field is required.">*</span></label>
+				
+				<input type="file" name="photo" multiple  />
 			</div>
 			
 		    <div class="form-actions">

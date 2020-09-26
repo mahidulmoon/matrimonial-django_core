@@ -84,12 +84,15 @@ def createProfile(request):
                 bros = request.POST['bros']
                 aboutme = request.POST['aboutme']
                 
+                if bool(request.FILES.get('photo', False)) == True:
+                        profile = Profile(user=request.user,firstname=firstname,lastname=lastname,sex=sex,dob_day=dob_day,dob_month=dob_month,dob_year=dob_year,religion=religion,caste=caste,subcaste=subcaste,country=country,state=state,district=district,age=age,maritalstatus=maritalstatus,profileby=profileby,education=education,specialization=edudescr,bodytype=bodytype,physicalstatus=physicalstatus,drink=drink,smoke=smoke,mothertounge=mothertounge,bloodgroup=bloodgroup,weight=weight,height=height,colour=colour,diet=diet,occupation=occupation,occupationdescr=occupationdescr,income=income,fatheroccupation=fatheroccupation,motheroccupation=motheroccupation,sis=sis,bros=bros,aboutme=aboutme,image_field=request.FILES['photo'])
+                        profile.save()
+                        messages.info(request,"Profile saved!!!")
+                        return redirect('view-profile')
                 
-                profile = Profile(user=request.user,firstname=firstname,lastname=lastname,sex=sex,dob_day=dob_day,dob_month=dob_month,dob_year=dob_year,religion=religion,caste=caste,subcaste=subcaste,country=country,state=state,district=district,age=age,maritalstatus=maritalstatus,profileby=profileby,education=education,specialization=edudescr,bodytype=bodytype,physicalstatus=physicalstatus,drink=drink,smoke=smoke,mothertounge=mothertounge,bloodgroup=bloodgroup,weight=weight,height=height,colour=colour,diet=diet,occupation=occupation,occupationdescr=occupationdescr,income=income,fatheroccupation=fatheroccupation,motheroccupation=motheroccupation,sis=sis,bros=bros,aboutme=aboutme)
-                profile.save()
-                messages.info(request,"Profile saved!!!")
-                return redirect('view-profile')
-                
+                else:
+                        messages.info(request,"You forgot to add image")
+                        return redirect('create-profile')
                         
 	        
 

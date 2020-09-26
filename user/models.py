@@ -40,4 +40,5 @@ class Profile(models.Model):
     sis = models.CharField(max_length=28)
     bros = models.CharField(max_length=28)
     aboutme = models.TextField()
+    image_field = models.ImageField(upload_to='images/profile/',default=False)
     
