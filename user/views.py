@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 
 def register(request):
     if request.method == "POST":
@@ -114,3 +115,21 @@ def viewProfile(request):
 def logout(request):
     auth.logout(request)
     return redirect('user-login')
+
+
+
+def searchlist(request):
+        userlist = Profile.objects.all()
+        
+        users = Paginator(userlist,8)
+        page_number1 = request.GET.get('page1')
+        try:
+                event_obj = users.page(page_number1)
+        except PageNotAnInteger:
+                event_obj = users.page(1)
+        except EmptyPage:
+                event_obj = users.page(users.num_pages)
+        context={
+                "users":event_obj,
+        }
+        return render(request,'searchlist.html',context)
