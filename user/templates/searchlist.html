@@ -113,7 +113,7 @@ $(document).ready(function(){
                 <p>Job: {{ user.occupation }}</p>
                 <p>Salary: {{ user.income }}</p>
             </div>
-            <a id="edit-submit" name="op" style="height: 15%; width: 100%;" class="btn_1 submit">Details</a>
+            <a href="{% url 'view-profile-id' user.id %}" id="edit-submit" name="op" style="height: 15%; width: 100%;" class="btn_1 submit">Details</a>
         </div>
         
     {% endfor %}

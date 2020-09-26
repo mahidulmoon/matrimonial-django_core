@@ -111,7 +111,14 @@ $(document).ready(function(){
      <ul>
         <a href="{% url 'home' %}"><i class="fa fa-home home_1"></i></a>
         <span class="divider">&nbsp;|&nbsp;</span>
-        <li class="current-page">View Profile</li>
+		<li class="current-page">View Profile</li>
+		{% if messages %}
+					<ul class="messages">
+					    {% for message in messages %}
+					    <p style="color: red;">{{ message }}</p>
+					    {% endfor %}
+					</ul>
+				{% endif %}
      </ul>
    </div>
    <div class="profile">

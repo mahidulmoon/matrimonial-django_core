@@ -133,3 +133,11 @@ def searchlist(request):
                 "users":event_obj,
         }
         return render(request,'searchlist.html',context)
+
+
+def viewProfilewithID(request,pk):
+        profile = Profile.objects.get(id=pk)
+        context = {
+                'profile':profile
+        }
+        return render(request,'view-profile.html',context)
